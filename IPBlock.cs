@@ -61,7 +61,7 @@ namespace Smod.IpBlock{
                     this.plugin.Info("接続が許可されました");
                 }else{
                     this.plugin.Info("接続が拒否されました");
-                    ev.Player.Disconnect();
+                    ev.Player.Disconnect("GeoBlock");
                 }
                 if("" != result[1]){
                     this.plugin.Info(result[1]);
