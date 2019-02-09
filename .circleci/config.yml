@@ -3,14 +3,22 @@ jobs:
   build:
     docker:
       - image: microsoft/dotnet
-
+    
+    working_directory: ~/repo
+    
     steps:
       - checkout
 
       - run:
-          name: Greeting
-          command: echo Hello, world.
-
+          name: mkdir
+          command: mkdir output
       - run:
-          name: Print the Current Time
-          command: date
+          name: Download Library
+          command: wget https://github.com/Grover-c13/Smod2/releases/download/3.2.2/Smod2.dll
+      - run:
+          name: Compile
+          command: csc -target:library -reference:Smod2.dll IPBlock.cs -optimize -out:output/IPBlock.dll
+
+      - store_artifacts:
+          path: output
+          
