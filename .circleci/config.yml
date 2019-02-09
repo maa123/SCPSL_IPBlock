@@ -9,7 +9,7 @@ jobs:
 
     steps:
       - run: apt update
-      - run: apt install apt-transport-https dirmngr ca-certificates curl -y
+      - run: apt install apt-transport-https dirmngr ca-certificates wget -y
       - run: update-ca-certificates
       - run: apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
       - run: echo "deb https://download.mono-project.com/repo/ubuntu stable-bionic main" | tee /etc/apt/sources.list.d/mono-official-stable.list
@@ -22,7 +22,7 @@ jobs:
           command: mkdir output
       - run:
           name: Download Library
-          command: curl https://github.com/Grover-c13/Smod2/releases/download/3.2.2/Smod2.dll -O
+          command: wget https://github.com/Grover-c13/Smod2/releases/download/3.2.2/Smod2.dll
       - run:
           name: Compile
           command: csc -target:library -reference:Smod2.dll IPBlock.cs -optimize -out:output/IPBlock.dll
