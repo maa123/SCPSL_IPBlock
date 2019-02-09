@@ -22,7 +22,7 @@ jobs:
           command: mkdir output
       - run:
           name: Download Library
-          command: wget https://github.com/Grover-c13/Smod2/releases/download/3.2.2/Smod2.dll
+          command: curl https://github.com/Grover-c13/Smod2/releases/download/3.2.2/Smod2.dll -O
       - run:
           name: Compile
           command: csc -target:library -reference:Smod2.dll IPBlock.cs -optimize -out:output/IPBlock.dll
