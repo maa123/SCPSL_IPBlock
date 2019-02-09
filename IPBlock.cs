@@ -16,7 +16,7 @@ namespace IPBlock{
         name = "IPBlock",
         description = "IPアドレスから特定の国以外の接続を拒否する",
         id = "maa123.IPBlock",
-        version = "1.1",
+        version = "1.4",
         SmodMajor = 3,
         SmodMinor = 2,
         SmodRevision = 2
