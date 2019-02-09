@@ -18,8 +18,8 @@ namespace IPBlock{
         id = "maa123.IPBlock",
         version = "1.1",
         SmodMajor = 3,
-        SmodMinor = 1,
-        SmodRevision = 4
+        SmodMinor = 2,
+        SmodRevision = 2
     )]
     class IPBlock : Plugin{
         public override void OnDisable(){
@@ -52,7 +52,9 @@ namespace Smod.IpBlock{
             this.api_id = ConfigManager.Manager.Config.GetStringValue("ipblock_api_key","0");
             this.plugin.Info(this.api_id);
             if(ev.Player.IpAddress=="localClient"){
-                this.plugin.Info("IPアドレスの確認がスキップされました");
+                this.plugin.Info("IPアドレスの確認がスキップされました localhost");
+            }else if(ev.Player.GetAuthToken().Contains("Bypass geo restrictions: YES")){
+                this.plugin.Info("IPアドレスの確認がスキップされました Geo Bypass");
             }else{
                 string[] result = this.CheckAddr((string)ev.Player.IpAddress,this.api_id);
                 if(result[0] == "ok"){
